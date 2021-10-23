@@ -100,7 +100,7 @@ Page({
   getData(){
     return new Promise((resolve,reject)=>{
       wx.request({
-        url: 'http://localhost:5000/list1.json',
+        url: 'http://localhost:5000/list.json',
         //网络请求执行完后将执行的动作
         success(res){
           setTimeout(() => {
