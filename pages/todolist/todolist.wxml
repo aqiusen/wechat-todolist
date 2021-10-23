@@ -1,0 +1,15 @@
+<!--pages/todolist/todolist.wxml-->
+<view>
+  <view class="event-container">
+    <input class="event-input" bindinput="bindKeyInput" value="{{inputValue}}"/>
+    <view class="add-btn" bindtap="addList" data-value="{{inputValue}}">添加</view>
+  </view>
+  <view class="list-container">
+  <view class="list-item" wx:for="{{list}}" wx:key="index" > 
+    <view class="desc {{item.isComplete ? 'desc-completed' : ''}}" bindtap="jumpToDeatil" data-index="{{index}}">待做{{index+1}}:  {{item.desc}}</view>
+    <view wx:if="{{!item.isComplete}}" class="un-completed" bindtap="markComplete" data-index="{{index}}">未完成</view>
+    <view wx:else class="completed" bindtap="markComplete" data-index="{{index}}">已完成</view>
+    <view class="delete" bindtap="deleteData" data-index="{{index}}">删除</view>
+  </view>
+  </view>
+</view>
