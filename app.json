@@ -1,16 +1,16 @@
 {
-  "pages":[
+  "pages": [
+    "pages/systemapi/systemapi",
     "pages/todolist/todolist",
     "pages/index/index",
     "pages/logs/logs",
     "pages/detail/detail"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black",
-    "navigationBarTitleText":"ToDoList"
+    "navigationBarTitleText": "ToDoList",
+    "navigationBarTextStyle": "black"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

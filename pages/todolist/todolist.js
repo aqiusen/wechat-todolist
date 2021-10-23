@@ -1,5 +1,6 @@
 // pages/todolist/todolist.js
 const app = getApp()
+let resultSuccess = false;
 Page({
   /**
    * 初始数据
@@ -98,6 +99,14 @@ Page({
       this.setData({
         list: newList
       })
+    }).catch(err => {
+      {
+        wx.showToast({
+          title: err.errMsg,
+          icon: 'error',
+          duration: 1000
+        })
+      }
     });
   },
   //网络请求，获取数据
@@ -107,25 +116,33 @@ Page({
         url: 'http://localhost:5000/list.json',
         //网络请求执行完后将执行的动作
         success(res) {
-          setTimeout(() => {
-            console.log(res)
-            if (res.statusCode === 200) {
-              resolve(res.data.list);
-            } else {
-              resolve(null);
-            }
-            //隐藏loading 提示框
-            wx.hideLoading();
-            //隐藏导航条加载动画
-            wx.hideNavigationBarLoading();
-            //停止下拉刷新
-            wx.stopPullDownRefresh();
-          }, 1500);
+          console.log(res)
+          if (res.statusCode === 200) {
+            resolve(res.data.list);
+            resultSuccess = true;
+          } else {
+            resolve(null);
+          }
         },
         // 请求失败之后调用的函数
         fail: (error) => {
+          console.log("error", error)
+          resultSuccess = false
           reject(error)
-        }
+        },
+        complete: (res => {
+          setTimeout(() => {
+            if (resultSuccess) {
+              //隐藏loading 提示框
+              wx.hideLoading();
+              //隐藏导航条加载动画
+              wx.hideNavigationBarLoading();
+            }
+
+            //停止下拉刷新
+            wx.stopPullDownRefresh();
+          }, 500);
+        })
       })
     })
 

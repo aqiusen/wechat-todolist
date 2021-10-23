@@ -1,0 +1,9 @@
+<!--pages/systemapi/systemapi.wxml-->
+<view>
+  <view class="scan-btn" bindtap="takePhoto">点击调用手机拍照功能</view>
+  <view class="scan-btn" bindtap="changCameraPosition">点击切换前置或者后置相机</view>
+  <view class="scan-btn" bindtap="scanCode">点击调用扫一扫功能</view>
+  <view wx:if="{{scanResult.length>0}}">扫描结果:{{scanResult}}</view>
+  <image wx:if="{{imageSrc.length>0}}" src="{{imageSrc}}"></image>
+  <camera wx:else device-position="{{position}}" flash="off" binderror="error" style="width: 100%; height: 300px;"></camera>
+</view>
