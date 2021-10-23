@@ -1,4 +1,5 @@
 <!--pages/detail/detail.wxml-->
 <view class="text-container">
-  <text>{{desc}}</text>
+  <view>{{desc}}</view>
+  <view>globalData --{{detailInfo.desc}}</view>
 </view>

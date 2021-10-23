@@ -1,4 +1,5 @@
 // pages/todolist/todolist.js
+const app = getApp()
 Page({
   /**
    * 初始数据
@@ -22,11 +23,11 @@ Page({
     })
   },
   addList() {
-    if(!this.data.inputValue) {
+    if (!this.data.inputValue) {
       wx.showToast({
         title: '请输入添加内容',
-        icon:'none',
-        duration:500
+        icon: 'none',
+        duration: 500
       })
       return;
     }
@@ -57,55 +58,58 @@ Page({
   },
   jumpToDeatil(e) {
     const index = e.currentTarget.dataset.index;
+    console.log(app.globalData);
+    const info = this.data.list[index];
+    app.globalData.detailInfo = info;
     wx.navigateTo({
-      url: '../detail/detail?desc=' + this.data.list[index].desc
+      url: '../detail/detail?desc=' + info.desc
     })
   },
   /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-      //调用刷新时将执行的方法
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    //调用刷新时将执行的方法
     this.onRefresh();
   },
-   //刷新
-   onRefresh(){
+  //刷新
+  onRefresh() {
     //在当前页面显示导航条加载动画
-    wx.showNavigationBarLoading(); 
+    wx.showNavigationBarLoading();
     //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
     wx.showLoading({
       title: '数据中...',
     })
-    this.getData().then(res=>{
-      if(!res) {
+    this.getData().then(res => {
+      if (!res) {
         wx.showToast({
           title: '数据为空',
-          icon:'error',
-          duration:2000
+          icon: 'error',
+          duration: 2000
         })
         return;
       }
-      const newList = res.map(item=>{
+      const newList = res.map(item => {
         return {
-          desc:item,
-          isComplete:false
+          desc: item,
+          isComplete: false
         }
       })
       this.setData({
-        list:newList
+        list: newList
       })
     });
   },
   //网络请求，获取数据
-  getData(){
-    return new Promise((resolve,reject)=>{
+  getData() {
+    return new Promise((resolve, reject) => {
       wx.request({
         url: 'http://localhost:5000/list.json',
         //网络请求执行完后将执行的动作
-        success(res){
+        success(res) {
           setTimeout(() => {
             console.log(res)
-            if(res.statusCode === 200) {
+            if (res.statusCode === 200) {
               resolve(res.data.list);
             } else {
               resolve(null);
@@ -121,8 +125,8 @@ Page({
         // 请求失败之后调用的函数
         fail: (error) => {
           reject(error)
-      }
-  })   
+        }
+      })
     })
 
   },
