@@ -17,5 +17,9 @@ Page({
     detailInfo: null,
     scanResult:""
   },
-  
+  backToPrev() {
+    wx.navigateBack({
+      delta: 1,
+    })
+  }
 })

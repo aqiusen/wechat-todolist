@@ -2,4 +2,5 @@
 <view class="text-container">
   <view>{{desc}}</view>
   <view>globalData --{{detailInfo.desc}}</view>
+  <button bindtap="backToPrev">点击返回</button>
 </view>

@@ -20,4 +20,7 @@
   <view class="usermotto">
     <text class="user-motto" bindtap="JumpTodoList">{{motto}}</text>
   </view>
+  <button bindtap="jumpToDoList">jumpToDoList</button>
+  
+  <button bindtap="jumpCallApi">jumpCallApi</button>
 </view>
