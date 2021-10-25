@@ -11,15 +11,17 @@
   width:60px !important;
   border: 1px solid #ccc;
   text-align: center;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 30px;
 }
 
 .event-input {
   flex: 1;
   border: 1px solid #bbb;
+  border-radius: 20px;
   margin: 0 5px;
-  height: 40px;
+  height: 30px;
   padding-left: 10px;
 }
 
@@ -30,6 +32,7 @@
 
 .list-item {
   display: flex;
+  align-items: center;
   height: 30px;
   margin-bottom: 3px;
 }
@@ -39,30 +42,36 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  margin-left: 5px;
 }
 
 .desc-completed {
   text-decoration: line-through;
   color: #ccc;
 }
-
-.delete {
-  border: 1px solid black;
-  color: black;
-  padding: 2px;
-  margin-left: 5px;
+.btn {
+  font-size: 12px;
   min-width: 51px;
   text-align: center;
 }
+.delete {
+  border: 1px solid black;
+  border-radius: 20px;
+  color: black;
+  padding: 2px 4px;
+  margin-left: 5px;
+}
 
 .completed {
+  border-radius: 20px;
   color: green;
   border: 1px solid green;
-  padding: 2px;
+  padding: 2px 4px;
 }
 
 .un-completed {
+  border-radius: 20px;
   border: 1px solid red;
   color: red;
-  padding: 2px;
+  padding: 2px 4px;
 }

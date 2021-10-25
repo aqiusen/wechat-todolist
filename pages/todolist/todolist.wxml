@@ -6,10 +6,12 @@
   </view>
   <view class="list-container">
   <view class="list-item" wx:for="{{list}}" wx:key="index" > 
+    <icon wx:if="{{!item.isComplete}}" type="waiting" size="23"></icon>
+    <icon wx:else type="success" size="23"></icon>
     <view class="desc {{item.isComplete ? 'desc-completed' : ''}}" bindtap="jumpToDeatil" data-index="{{index}}">待做{{index+1}}:  {{item.desc}}</view>
-    <view wx:if="{{!item.isComplete}}" class="un-completed" bindtap="markComplete" data-index="{{index}}">未完成</view>
-    <view wx:else class="completed" bindtap="markComplete" data-index="{{index}}">已完成</view>
-    <view class="delete" bindtap="deleteData" data-index="{{index}}">删除</view>
+    <view wx:if="{{!item.isComplete}}" class="btn un-completed" bindtap="markComplete" data-index="{{index}}">未完成</view>
+    <view wx:else class="btn completed" bindtap="markComplete" data-index="{{index}}">已完成</view>
+    <view class="btn delete" bindtap="deleteData" data-index="{{index}}">删除</view>
   </view>
   </view>
 </view>
