@@ -79,7 +79,7 @@ Page({
     wx.showNavigationBarLoading();
     //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
     wx.showLoading({
-      title: '数据中...',
+      title: '加载中...',
     })
     this.getData().then(res => {
       if (!res) {
