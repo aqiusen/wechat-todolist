@@ -1,9 +1,8 @@
 {
   "pages": [
-    "pages/todolist/todolist",
     "pages/index/index",
+    "pages/todolist/todolist",
     "pages/systemapi/systemapi",
-
     "pages/logs/logs",
     "pages/detail/detail"
   ],
